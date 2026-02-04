@@ -1,0 +1,17 @@
+Description: Disable benchdnn tests which are very slow to compile and run
+Author: Shengqi Chen <harry@debian.org>
+Forwarded: not-needed
+Last-Update: 2025-01-24
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -104,7 +104,7 @@
+ endif()
+ 
+ add_subdirectory(gtests)
+-add_subdirectory(benchdnn)
++#add_subdirectory(benchdnn)
+ 
+ if(NOT DNNL_WITH_SYCL AND NOT DNNL_ENABLE_STACK_CHECKER)
+     if(UNIX OR MINGW)

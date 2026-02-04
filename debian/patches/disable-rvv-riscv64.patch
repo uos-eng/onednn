@@ -1,0 +1,17 @@
+Description: not enable DNNL_RISCV_USE_RVV_INTRINSICS
+Author: Bo YU <tsu.yubo@gmail.com> 
+Forwarded: not-needed
+Last-Update: 2024-10-31
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/cmake/platform.cmake
++++ b/cmake/platform.cmake
+@@ -148,7 +148,7 @@
+         set(RV64_MARCH_FLAG "-march=rv64gc")
+     endif()
+ 
+-    set(DNNL_RISCV_USE_RVV_INTRINSICS ${CAN_COMPILE_RVV_INTRINSICS})
++    #set(DNNL_RISCV_USE_RVV_INTRINSICS ${CAN_COMPILE_RVV_INTRINSICS})
+     if (${DNNL_RISCV_USE_RVV_INTRINSICS})
+         add_definitions(-DDNNL_RISCV_USE_RVV_INTRINSICS)
+     endif()

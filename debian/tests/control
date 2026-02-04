@@ -1,0 +1,192 @@
+Test-Command: g++ $(dpkg-buildflags --get CXXFLAGS) $(dpkg-buildflags --get CPPFLAGS) $(dpkg-buildflags --get LDFLAGS) examples/bnorm_u8_via_binary_postops.cpp -ldnnl -lOpenCL -o bnorm_u8_via_binary_postops_tester; ./bnorm_u8_via_binary_postops_tester
+Depends: @, gcc, g++, clang, libc6-dev, ocl-icd-opencl-dev,
+Restrictions: allow-stderr
+Architecture: amd64 arm64 ppc64el s390x
+Features: test-name=g++-bnorm_u8_via_binary_postops.cpp
+
+Test-Command: g++ $(dpkg-buildflags --get CXXFLAGS) $(dpkg-buildflags --get CPPFLAGS) $(dpkg-buildflags --get LDFLAGS) examples/cnn_inference_f32.c -ldnnl -lOpenCL -o cnn_inference_f32_tester; ./cnn_inference_f32_tester
+Depends: @, gcc, g++, clang, libc6-dev, ocl-icd-opencl-dev,
+Restrictions: allow-stderr
+Architecture: amd64 arm64 ppc64el s390x
+Features: test-name=g++-cnn_inference_f32.c
+
+Test-Command: g++ $(dpkg-buildflags --get CXXFLAGS) $(dpkg-buildflags --get CPPFLAGS) $(dpkg-buildflags --get LDFLAGS) examples/cnn_inference_f32.cpp -ldnnl -lOpenCL -o cnn_inference_f32_tester; ./cnn_inference_f32_tester
+Depends: @, gcc, g++, clang, libc6-dev, ocl-icd-opencl-dev,
+Restrictions: allow-stderr
+Architecture: amd64 arm64 ppc64el s390x
+Features: test-name=g++-cnn_inference_f32.cpp
+
+Test-Command: g++ $(dpkg-buildflags --get CXXFLAGS) $(dpkg-buildflags --get CPPFLAGS) $(dpkg-buildflags --get LDFLAGS) examples/cnn_inference_int8.cpp -ldnnl -lOpenCL -o cnn_inference_int8_tester; ./cnn_inference_int8_tester
+Depends: @, gcc, g++, clang, libc6-dev, ocl-icd-opencl-dev,
+Restrictions: allow-stderr
+Architecture: amd64 arm64 ppc64el s390x
+Features: test-name=g++-cnn_inference_int8.cpp
+
+Test-Command: g++ $(dpkg-buildflags --get CXXFLAGS) $(dpkg-buildflags --get CPPFLAGS) $(dpkg-buildflags --get LDFLAGS) examples/cnn_training_bf16.cpp -ldnnl -lOpenCL -o cnn_training_bf16_tester; ./cnn_training_bf16_tester
+Depends: @, gcc, g++, clang, libc6-dev, ocl-icd-opencl-dev,
+Restrictions: allow-stderr
+Architecture: amd64 arm64 ppc64el s390x
+Features: test-name=g++-cnn_training_bf16.cpp
+
+Test-Command: g++ $(dpkg-buildflags --get CXXFLAGS) $(dpkg-buildflags --get CPPFLAGS) $(dpkg-buildflags --get LDFLAGS) examples/cnn_training_f32.cpp -ldnnl -lOpenCL -o cnn_training_f32_tester; ./cnn_training_f32_tester
+Depends: @, gcc, g++, clang, libc6-dev, ocl-icd-opencl-dev,
+Restrictions: allow-stderr
+Architecture: amd64 arm64 ppc64el s390x
+Features: test-name=g++-cnn_training_f32.cpp
+
+Test-Command: g++ $(dpkg-buildflags --get CXXFLAGS) $(dpkg-buildflags --get CPPFLAGS) $(dpkg-buildflags --get LDFLAGS) examples/cpu_matmul_coo.cpp -ldnnl -lOpenCL -o cpu_matmul_coo_tester; ./cpu_matmul_coo_tester
+Depends: @, gcc, g++, clang, libc6-dev, ocl-icd-opencl-dev,
+Restrictions: allow-stderr
+Architecture: amd64 arm64 ppc64el s390x
+Features: test-name=g++-cpu_matmul_coo.cpp
+
+Test-Command: g++ $(dpkg-buildflags --get CXXFLAGS) $(dpkg-buildflags --get CPPFLAGS) $(dpkg-buildflags --get LDFLAGS) examples/cpu_matmul_csr.cpp -ldnnl -lOpenCL -o cpu_matmul_csr_tester; ./cpu_matmul_csr_tester
+Depends: @, gcc, g++, clang, libc6-dev, ocl-icd-opencl-dev,
+Restrictions: allow-stderr
+Architecture: amd64 arm64 ppc64el s390x
+Features: test-name=g++-cpu_matmul_csr.cpp
+
+Test-Command: g++ $(dpkg-buildflags --get CXXFLAGS) $(dpkg-buildflags --get CPPFLAGS) $(dpkg-buildflags --get LDFLAGS) examples/cpu_matmul_weights_compression.cpp -ldnnl -lOpenCL -o cpu_matmul_weights_compression_tester; ./cpu_matmul_weights_compression_tester
+Depends: @, gcc, g++, clang, libc6-dev, ocl-icd-opencl-dev,
+Restrictions: allow-stderr
+Architecture: amd64 arm64 ppc64el s390x
+Features: test-name=g++-cpu_matmul_weights_compression.cpp
+
+Test-Command: g++ $(dpkg-buildflags --get CXXFLAGS) $(dpkg-buildflags --get CPPFLAGS) $(dpkg-buildflags --get LDFLAGS) examples/cpu_cnn_training_f32.c -ldnnl -lOpenCL -o cpu_cnn_training_f32_tester; ./cpu_cnn_training_f32_tester
+Depends: @, gcc, g++, clang, libc6-dev, ocl-icd-opencl-dev,
+Restrictions: allow-stderr
+Architecture: amd64 arm64 ppc64el s390x
+Features: test-name=g++-cpu_cnn_training_f32.c
+
+Test-Command: g++ $(dpkg-buildflags --get CXXFLAGS) $(dpkg-buildflags --get CPPFLAGS) $(dpkg-buildflags --get LDFLAGS) examples/cpu_rnn_inference_f32.cpp -ldnnl -lOpenCL -o cpu_rnn_inference_f32_tester; ./cpu_rnn_inference_f32_tester
+Depends: @, gcc, g++, clang, libc6-dev, ocl-icd-opencl-dev,
+Restrictions: allow-stderr
+Architecture: amd64 arm64 ppc64el s390x
+Features: test-name=g++-cpu_rnn_inference_f32.cpp
+
+Test-Command: g++ $(dpkg-buildflags --get CXXFLAGS) $(dpkg-buildflags --get CPPFLAGS) $(dpkg-buildflags --get LDFLAGS) examples/cpu_rnn_inference_int8.cpp -ldnnl -lOpenCL -o cpu_rnn_inference_int8_tester; ./cpu_rnn_inference_int8_tester
+Depends: @, gcc, g++, clang, libc6-dev, ocl-icd-opencl-dev,
+Restrictions: allow-stderr
+Architecture: amd64 arm64 ppc64el s390x
+Features: test-name=g++-cpu_rnn_inference_int8.cpp
+
+Test-Command: g++ $(dpkg-buildflags --get CXXFLAGS) $(dpkg-buildflags --get CPPFLAGS) $(dpkg-buildflags --get LDFLAGS) examples/getting_started.cpp -ldnnl -lOpenCL -o getting_started_tester; ./getting_started_tester
+Depends: @, gcc, g++, clang, libc6-dev, ocl-icd-opencl-dev,
+Restrictions: allow-stderr
+Architecture: amd64 arm64 ppc64el s390x
+Features: test-name=g++-getting_started.cpp
+
+Test-Command: g++ $(dpkg-buildflags --get CXXFLAGS) $(dpkg-buildflags --get CPPFLAGS) $(dpkg-buildflags --get LDFLAGS) examples/memory_format_propagation.cpp -ldnnl -lOpenCL -o memory_format_propagation_tester; ./memory_format_propagation_tester
+Depends: @, gcc, g++, clang, libc6-dev, ocl-icd-opencl-dev,
+Restrictions: allow-stderr
+Architecture: amd64 arm64 ppc64el s390x
+Features: test-name=g++-memory_format_propagation.cpp
+
+Test-Command: g++ $(dpkg-buildflags --get CXXFLAGS) $(dpkg-buildflags --get CPPFLAGS) $(dpkg-buildflags --get LDFLAGS) examples/performance_profiling.cpp -ldnnl -lOpenCL -o performance_profiling_tester; ./performance_profiling_tester
+Depends: @, gcc, g++, clang, libc6-dev, ocl-icd-opencl-dev,
+Restrictions: allow-stderr
+Architecture: amd64 arm64 ppc64el s390x
+Features: test-name=g++-performance_profiling.cpp
+
+Test-Command: g++ $(dpkg-buildflags --get CXXFLAGS) $(dpkg-buildflags --get CPPFLAGS) $(dpkg-buildflags --get LDFLAGS) examples/rnn_training_f32.cpp -ldnnl -lOpenCL -o rnn_training_f32_tester; ./rnn_training_f32_tester
+Depends: @, gcc, g++, clang, libc6-dev, ocl-icd-opencl-dev,
+Restrictions: allow-stderr
+Architecture: amd64 arm64 ppc64el s390x
+Features: test-name=g++-rnn_training_f32.cpp
+
+Test-Command: clang++ $(dpkg-buildflags --get CXXFLAGS) $(dpkg-buildflags --get CPPFLAGS) $(dpkg-buildflags --get LDFLAGS) examples/bnorm_u8_via_binary_postops.cpp -ldnnl -lOpenCL -o bnorm_u8_via_binary_postops_tester; ./bnorm_u8_via_binary_postops_tester
+Depends: @, gcc, g++, clang, libc6-dev, ocl-icd-opencl-dev,
+Restrictions: allow-stderr
+Architecture: amd64 arm64 ppc64el s390x
+Features: test-name=clang++-bnorm_u8_via_binary_postops.cpp
+
+Test-Command: clang++ $(dpkg-buildflags --get CXXFLAGS) $(dpkg-buildflags --get CPPFLAGS) $(dpkg-buildflags --get LDFLAGS) examples/cnn_inference_f32.c -ldnnl -lOpenCL -o cnn_inference_f32_tester; ./cnn_inference_f32_tester
+Depends: @, gcc, g++, clang, libc6-dev, ocl-icd-opencl-dev,
+Restrictions: allow-stderr
+Architecture: amd64 arm64 ppc64el s390x
+Features: test-name=clang++-cnn_inference_f32.c
+
+Test-Command: clang++ $(dpkg-buildflags --get CXXFLAGS) $(dpkg-buildflags --get CPPFLAGS) $(dpkg-buildflags --get LDFLAGS) examples/cnn_inference_f32.cpp -ldnnl -lOpenCL -o cnn_inference_f32_tester; ./cnn_inference_f32_tester
+Depends: @, gcc, g++, clang, libc6-dev, ocl-icd-opencl-dev,
+Restrictions: allow-stderr
+Architecture: amd64 arm64 ppc64el s390x
+Features: test-name=clang++-cnn_inference_f32.cpp
+
+Test-Command: clang++ $(dpkg-buildflags --get CXXFLAGS) $(dpkg-buildflags --get CPPFLAGS) $(dpkg-buildflags --get LDFLAGS) examples/cnn_inference_int8.cpp -ldnnl -lOpenCL -o cnn_inference_int8_tester; ./cnn_inference_int8_tester
+Depends: @, gcc, g++, clang, libc6-dev, ocl-icd-opencl-dev,
+Restrictions: allow-stderr
+Architecture: amd64 arm64 ppc64el s390x
+Features: test-name=clang++-cnn_inference_int8.cpp
+
+Test-Command: clang++ $(dpkg-buildflags --get CXXFLAGS) $(dpkg-buildflags --get CPPFLAGS) $(dpkg-buildflags --get LDFLAGS) examples/cnn_training_bf16.cpp -ldnnl -lOpenCL -o cnn_training_bf16_tester; ./cnn_training_bf16_tester
+Depends: @, gcc, g++, clang, libc6-dev, ocl-icd-opencl-dev,
+Restrictions: allow-stderr
+Architecture: amd64 arm64 ppc64el s390x
+Features: test-name=clang++-cnn_training_bf16.cpp
+
+Test-Command: clang++ $(dpkg-buildflags --get CXXFLAGS) $(dpkg-buildflags --get CPPFLAGS) $(dpkg-buildflags --get LDFLAGS) examples/cnn_training_f32.cpp -ldnnl -lOpenCL -o cnn_training_f32_tester; ./cnn_training_f32_tester
+Depends: @, gcc, g++, clang, libc6-dev, ocl-icd-opencl-dev,
+Restrictions: allow-stderr
+Architecture: amd64 arm64 ppc64el s390x
+Features: test-name=clang++-cnn_training_f32.cpp
+
+Test-Command: clang++ $(dpkg-buildflags --get CXXFLAGS) $(dpkg-buildflags --get CPPFLAGS) $(dpkg-buildflags --get LDFLAGS) examples/cpu_matmul_coo.cpp -ldnnl -lOpenCL -o cpu_matmul_coo_tester; ./cpu_matmul_coo_tester
+Depends: @, gcc, g++, clang, libc6-dev, ocl-icd-opencl-dev,
+Restrictions: allow-stderr
+Architecture: amd64 arm64 ppc64el s390x
+Features: test-name=clang++-cpu_matmul_coo.cpp
+
+Test-Command: clang++ $(dpkg-buildflags --get CXXFLAGS) $(dpkg-buildflags --get CPPFLAGS) $(dpkg-buildflags --get LDFLAGS) examples/cpu_matmul_csr.cpp -ldnnl -lOpenCL -o cpu_matmul_csr_tester; ./cpu_matmul_csr_tester
+Depends: @, gcc, g++, clang, libc6-dev, ocl-icd-opencl-dev,
+Restrictions: allow-stderr
+Architecture: amd64 arm64 ppc64el s390x
+Features: test-name=clang++-cpu_matmul_csr.cpp
+
+Test-Command: clang++ $(dpkg-buildflags --get CXXFLAGS) $(dpkg-buildflags --get CPPFLAGS) $(dpkg-buildflags --get LDFLAGS) examples/cpu_matmul_weights_compression.cpp -ldnnl -lOpenCL -o cpu_matmul_weights_compression_tester; ./cpu_matmul_weights_compression_tester
+Depends: @, gcc, g++, clang, libc6-dev, ocl-icd-opencl-dev,
+Restrictions: allow-stderr
+Architecture: amd64 arm64 ppc64el s390x
+Features: test-name=clang++-cpu_matmul_weights_compression.cpp
+
+Test-Command: clang++ $(dpkg-buildflags --get CXXFLAGS) $(dpkg-buildflags --get CPPFLAGS) $(dpkg-buildflags --get LDFLAGS) examples/cpu_cnn_training_f32.c -ldnnl -lOpenCL -o cpu_cnn_training_f32_tester; ./cpu_cnn_training_f32_tester
+Depends: @, gcc, g++, clang, libc6-dev, ocl-icd-opencl-dev,
+Restrictions: allow-stderr
+Architecture: amd64 arm64 ppc64el s390x
+Features: test-name=clang++-cpu_cnn_training_f32.c
+
+Test-Command: clang++ $(dpkg-buildflags --get CXXFLAGS) $(dpkg-buildflags --get CPPFLAGS) $(dpkg-buildflags --get LDFLAGS) examples/cpu_rnn_inference_f32.cpp -ldnnl -lOpenCL -o cpu_rnn_inference_f32_tester; ./cpu_rnn_inference_f32_tester
+Depends: @, gcc, g++, clang, libc6-dev, ocl-icd-opencl-dev,
+Restrictions: allow-stderr
+Architecture: amd64 arm64 ppc64el s390x
+Features: test-name=clang++-cpu_rnn_inference_f32.cpp
+
+Test-Command: clang++ $(dpkg-buildflags --get CXXFLAGS) $(dpkg-buildflags --get CPPFLAGS) $(dpkg-buildflags --get LDFLAGS) examples/cpu_rnn_inference_int8.cpp -ldnnl -lOpenCL -o cpu_rnn_inference_int8_tester; ./cpu_rnn_inference_int8_tester
+Depends: @, gcc, g++, clang, libc6-dev, ocl-icd-opencl-dev,
+Restrictions: allow-stderr
+Architecture: amd64 arm64 ppc64el s390x
+Features: test-name=clang++-cpu_rnn_inference_int8.cpp
+
+Test-Command: clang++ $(dpkg-buildflags --get CXXFLAGS) $(dpkg-buildflags --get CPPFLAGS) $(dpkg-buildflags --get LDFLAGS) examples/getting_started.cpp -ldnnl -lOpenCL -o getting_started_tester; ./getting_started_tester
+Depends: @, gcc, g++, clang, libc6-dev, ocl-icd-opencl-dev,
+Restrictions: allow-stderr
+Architecture: amd64 arm64 ppc64el s390x
+Features: test-name=clang++-getting_started.cpp
+
+Test-Command: clang++ $(dpkg-buildflags --get CXXFLAGS) $(dpkg-buildflags --get CPPFLAGS) $(dpkg-buildflags --get LDFLAGS) examples/memory_format_propagation.cpp -ldnnl -lOpenCL -o memory_format_propagation_tester; ./memory_format_propagation_tester
+Depends: @, gcc, g++, clang, libc6-dev, ocl-icd-opencl-dev,
+Restrictions: allow-stderr
+Architecture: amd64 arm64 ppc64el s390x
+Features: test-name=clang++-memory_format_propagation.cpp
+
+Test-Command: clang++ $(dpkg-buildflags --get CXXFLAGS) $(dpkg-buildflags --get CPPFLAGS) $(dpkg-buildflags --get LDFLAGS) examples/performance_profiling.cpp -ldnnl -lOpenCL -o performance_profiling_tester; ./performance_profiling_tester
+Depends: @, gcc, g++, clang, libc6-dev, ocl-icd-opencl-dev,
+Restrictions: allow-stderr
+Architecture: amd64 arm64 ppc64el s390x
+Features: test-name=clang++-performance_profiling.cpp
+
+Test-Command: clang++ $(dpkg-buildflags --get CXXFLAGS) $(dpkg-buildflags --get CPPFLAGS) $(dpkg-buildflags --get LDFLAGS) examples/rnn_training_f32.cpp -ldnnl -lOpenCL -o rnn_training_f32_tester; ./rnn_training_f32_tester
+Depends: @, gcc, g++, clang, libc6-dev, ocl-icd-opencl-dev,
+Restrictions: allow-stderr
+Architecture: amd64 arm64 ppc64el s390x
+Features: test-name=clang++-rnn_training_f32.cpp
+

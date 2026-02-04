@@ -1,0 +1,30 @@
+Description: Use spdlog from Debian archive
+Author: Shengqi Chen <harry@debian.org>
+Forwarded: not-needed
+Last-Update: 2025-01-24
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -182,6 +182,8 @@
+     "${CMAKE_CURRENT_SOURCE_DIR}/../include/oneapi/dnnl/dnnl_graph_sycl.hpp")
+ endif()
+ 
++find_package(spdlog REQUIRED)
++
+ get_property(LIB_DEPS GLOBAL PROPERTY DNNL_LIB_DEPS)
+ get_property(STATIC_LIB_DEPS GLOBAL PROPERTY DNNL_SUBDIR_EXTRA_STATIC_LIBS)
+ get_property(SHARED_LIB_DEPS GLOBAL PROPERTY DNNL_SUBDIR_EXTRA_SHARED_LIBS)
+--- a/src/common/logging.cpp
++++ b/src/common/logging.cpp
+@@ -18,8 +18,8 @@
+ #include "common/utils.hpp"
+ 
+ #define SPDLOG_DISABLE_DEFAULT_LOGGER
+-#include "spdlog/sinks/rotating_file_sink.h"
+-#include "spdlog/spdlog.h"
++#include <spdlog/sinks/rotating_file_sink.h>
++#include <spdlog/spdlog.h>
+ 
+ namespace dnnl {
+ namespace impl {
