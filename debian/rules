@@ -1,4 +1,63 @@
 #!/usr/bin/make -f
 
+export DEB_BUILD_MAINT_OPTIONS   = hardening=+all optimize=+lto
+export DEB_CFLAGS_MAINT_APPEND   = -fdiagnostics-color=always #-fcolor-diagnostics #-Wall #-pedantic
+export DEB_CXXFLAGS_MAINT_APPEND = -fdiagnostics-color=always #-fcolor-diagnostics #-Wall #-pedantic
+export DEB_LDFLAGS_MAINT_APPEND  = -Wl,--as-needed
+#export CLICOLOR_FORCE=ON
+
+# tests can take ~60% build time
+BUILD_TEST=OFF
+ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
+# too slow on rv64, takes hours (#1080206)
+ifneq ($(DEB_HOST_ARCH), riscv64)
+BUILD_TEST=ON
+endif
+endif
+
+# ukernel is only implemented (and used by PyTorch) on amd64
+BUILD_UKERNEL=OFF
+ifeq ($(DEB_HOST_ARCH), amd64)
+BUILD_UKERNEL=ON
+endif
+
+
 %:
-	dh $@
+	dh $@ -Scmake+ninja
+
+# https://oneapi-src.github.io/oneDNN/dev_guide_build.html
+override_dh_auto_configure:
+	dh_auto_configure -- \
+		-DCMAKE_CXX_STANDARD=17 \
+		-DCMAKE_BUILD_TYPE=RelWithDebInfo \
+		-DDNNL_EXPERIMENTAL_SPARSE=ON \
+		-DDNNL_EXPERIMENTAL_UKERNEL=${BUILD_UKERNEL} \
+		-DDNNL_BUILD_TESTS=${BUILD_TEST} \
+		-DONEDNN_ARCH_OPT_FLAGS="" \
+		$(if $(filter riscv64,$(DEB_HOST_ARCH)),-DONEDNN_CPU_RUNTIME=SEQ -DDNNL_TARGET_ARCH=RV64,)
+# onednn uses some experimental features from newer ACL (than in the archive)
+# e.g. arm_compute/runtime/experimental/operators/CpuMeanStdDevNormalization.h
+#		$(if $(filter arm64,$(DEB_HOST_ARCH)),-DONEDNN_AARCH64_USE_ACL=ON,) \
+		
+
+override_dh_auto_test:
+ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
+ifeq ($(DEB_HOST_ARCH), s390x)
+# fails on some bf16 cases
+	dh_auto_test || true
+else ifeq ($(DEB_HOST_ARCH), riscv64)
+# disabled
+	true
+else
+	dh_auto_test
+endif
+endif
+
+execute_before_dh_auto_build:
+	@echo 'blhc: ignore-line-regexp: \.S'
+
+execute_before_dh_auto_install:
+	mkdir -p debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/cmake/mkldnn
+
+override_dh_missing:
+	dh_missing --fail-missing

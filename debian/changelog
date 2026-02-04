@@ -1,5 +1,624 @@
-template-repository (1.0-1) unstable; urgency=medium
+onednn (3.9.1+ds-2) unstable; urgency=medium
 
-  * Initial release
+  * d/tests: add more examples to compile.
+  * d/patches: cherry-pick patch from upstream to fix build on ppc64el.
 
- -- Tsic404 <liuheng@deepin.org>  Sat, 28 Jan 2023 13:46:49 +0800
+ -- Shengqi Chen <harry@debian.org>  Fri, 26 Sep 2025 21:53:31 +0800
+
+onednn (3.9.1+ds-1) unstable; urgency=medium
+
+  * New upstream version 3.9.1+ds.
+  * d/watch: switch to version 5 and skip all pre-releases.
+  * d/patches: refresh existing patches.
+  * d/symbols: add new symbols in libdnnl3.6.
+
+ -- Shengqi Chen <harry@debian.org>  Thu, 18 Sep 2025 17:15:08 +0800
+
+onednn (3.8.1+ds-1) unstable; urgency=medium
+
+  * d/copyright: change Files-Excluded path according to upstream.
+  * New upstream version 3.8.1+ds.
+  * d/patches: refresh exsiting patches.
+  * d/libdnnl3.6.symbols: ignore upstream-leaked symbols.
+  * d/copyright: update according to upstream source.
+
+ -- Shengqi Chen <harry@debian.org>  Wed, 04 Jun 2025 21:32:55 +0800
+
+onednn (3.7.3+ds-1) unstable; urgency=medium
+
+  * New upstream version 3.7.3+ds.
+  * d/patches: remove applied patches.
+
+ -- Shengqi Chen <harry@debian.org>  Fri, 02 May 2025 16:40:26 +0800
+
+onednn (3.7.2+ds-2) unstable; urgency=medium
+
+  [ Helmut Grohne ]
+  * Fix FTCBFS: fix build vs host confusion (Closes: #1103803)
+
+  [ Shengqi Chen ]
+  * d/patches: cherry-pick patches from upstream version 3.7.3
+
+ -- Shengqi Chen <harry@debian.org>  Wed, 23 Apr 2025 21:08:33 +0800
+
+onednn (3.7.2+ds-1) unstable; urgency=medium
+
+  * New upstream version 3.7.2+ds.
+  * d/control: bump std-ver to 4.7.2 (no changes required).
+  * Add patch to add basic build support on loong64 (closes: #1057643).
+  * d/control: enable libdnnl{,-dev} on loong64.
+
+ -- Shengqi Chen <harry@debian.org>  Tue, 08 Apr 2025 00:02:17 +0800
+
+onednn (3.7.1+ds-1) unstable; urgency=medium
+
+  * New upstream version 3.7.1+ds
+
+ -- Shengqi Chen <harry@debian.org>  Mon, 03 Mar 2025 19:45:44 +0800
+
+onednn (3.7+ds-1) unstable; urgency=medium
+
+  * New upstream version 3.7+ds
+  * d/patches: refresh existing patches
+
+ -- Shengqi Chen <harry@debian.org>  Sun, 23 Feb 2025 23:36:45 +0800
+
+onednn (3.7~rc+ds-1) unstable; urgency=medium
+
+  * New upstream version 3.7~rc+ds
+  * Update symbol control file for libdnnl3.6
+  * d/control: add myself in uploaders
+
+ -- Shengqi Chen <harry@debian.org>  Tue, 18 Feb 2025 00:25:44 +0800
+
+onednn (3.7~pc+ds-1~exp3) experimental; urgency=medium
+
+  * Team upload.
+  * Change SONAME to libdnnl3.6 due to ukernel API changes
+  * d/copyright: update according to latest upstream source
+
+ -- Shengqi Chen <harry@debian.org>  Sat, 25 Jan 2025 23:52:44 +0800
+
+onednn (3.7~pc+ds-1~exp2) experimental; urgency=medium
+
+  * Team upload.
+  * d/libdnnl3.symbols: mark some ukernel-related symbols as amd64-only
+
+ -- Shengqi Chen <harry@debian.org>  Fri, 24 Jan 2025 18:52:25 +0800
+
+onednn (3.7~pc+ds-1~exp1) experimental; urgency=medium
+
+  * Team upload.
+  * New upstream version 3.7~pc+ds
+    + Exclude gtest and spdlog related files from source
+    + Add patch to use gtest and spdlog from Debian
+  * d/patches: refresh patches
+  * Install new header file dnnl_version_hash.h
+  * Add patch to disable benchdnn tests to reduce compiling & test time
+  * Update symbol control file for libdnnl3
+  * d/rules: compile with C++17 to fix errors in gtest
+
+ -- Shengqi Chen <harry@debian.org>  Fri, 24 Jan 2025 16:58:55 +0800
+
+onednn (3.5.3-5) unstable; urgency=medium
+
+  [ Shengqi Chen ]
+  * Team upload.
+  * d/rules: disable building tests on riscv64
+
+  [ Bo YU ]
+  * Fix FTBFS on riscv64 by disabling RVV. (Closes: #1086533)
+  * Build on riscv64 with default toolchain.
+
+ -- Shengqi Chen <harry-chen@outlook.com>  Fri, 01 Nov 2024 16:31:09 +0800
+
+onednn (3.5.3-4) unstable; urgency=medium
+
+  * Team upload.
+  * d/rules related:
+    + print blhc ignore regexp to eliminate false errors
+    + disable ukernels on non-amd64 (no impls & not used by PyTorch)
+    + clean up & add comments
+    + disable too slow dh_auto_test on riscv64
+  * Update libdnnl3.symbols to mark amd64-only symbols
+
+ -- Shengqi Chen <harry-chen@outlook.com>  Wed, 30 Oct 2024 12:17:58 +0800
+
+onednn (3.5.3-3) unstable; urgency=medium
+
+  * Team upload.
+  * d/{control,rules}: do not specify clang version (closes: #1084070)
+  * d/control: remove M-A: same from libdnnl-dev due to file conflicts
+  * d/rules: enable sparse and ukernel features in dh_auto_configure
+    (needed by PyTorch 2.5)
+  * Add new symbols for libdnnl3 after enabling new features
+  * Tests related:
+    * Re-generate all tests with readable name and correct build flags
+    * d/rules: disable building tests with nocheck profile
+
+ -- Shengqi Chen <harry-chen@outlook.com>  Mon, 28 Oct 2024 23:47:02 +0800
+
+onednn (3.5.3-2) unstable; urgency=medium
+
+  [ Shengqi Chen ]
+  * Team upload.
+  * d/control: remove useless dependency of libdnnl-dev
+  * d/symbols: add back c++ symbols and set as optional,
+    unify symbol files on all architectures
+
+  [ Bo YU ]
+  * Enable DONEDNN_CPU_RUNTIME=SEQ on riscv64 and build it with clang.
+    (Closes: #1080206)
+
+ -- Shengqi Chen <harry-chen@outlook.com>  Thu, 12 Sep 2024 21:39:38 +0800
+
+onednn (3.5.3-1) unstable; urgency=medium
+
+  [ Shengqi Chen ]
+  * Team upload.
+  * New upstream version 3.5.3
+    Please use this version for PyTorch/v2.4+ releases.
+  * d/patches: remove already applied patches
+  * d/control: bump std-ver to 4.7.0.1 (no changes required)
+  * d/libdnnl-dev.install: add new headers to install
+  * d/libdnnl3.symbols.amd64:
+    - remove all 3rd party symbols to avoid future errors
+      (closes: #1075333, #1051614) useless c++ symbols removed
+      (closes: #1015564) confirmed to build with LTO turned on
+    - add new symbols
+  * d/copyright: remove useless File-Excluded
+
+  [ Aron Xu ]
+  * d/rules: enable LTO
+
+ -- Shengqi Chen <harry-chen@outlook.com>  Thu, 29 Aug 2024 00:14:37 +0800
+
+onednn (3.1.1-2) unstable; urgency=medium
+
+  * Upload to unstable.
+
+ -- Mo Zhou <lumin@debian.org>  Sun, 31 Dec 2023 20:12:13 -0500
+
+onednn (3.1.1-1) experimental; urgency=medium
+
+  * New upstream version 3.1.1
+    Please pin to this version for PyTorch/v2.1.X releases.
+  * Append riscv64 to supported architectures.
+  * Bump SOVERSION from 2 to 3 following upstream.
+  * Quilt refresh patchset.
+  * Update build options and disable OpenCL.
+  * Install the new header files to -dev package.
+  * Refresh symbols control file.
+  * d/copyright: Delete superfluous file patterns.
+
+ -- Mo Zhou <lumin@debian.org>  Fri, 29 Dec 2023 14:23:09 -0500
+
+onednn (2.7.4-2) unstable; urgency=medium
+
+  * Team upload.
+  * Fix FTBFS with GCC-13 on arm64
+
+ -- Timo Röhling <roehling@debian.org>  Thu, 17 Aug 2023 20:37:11 +0200
+
+onednn (2.7.4-1) unstable; urgency=medium
+
+  * New upstream version 2.7.4
+  * Please pin to oneDNN 2.7.X for PyTorch/v2.0.Y releases.
+
+ -- Mo Zhou <lumin@debian.org>  Wed, 19 Jul 2023 22:47:11 -0700
+
+onednn (2.6.3-1) unstable; urgency=medium
+
+  * New upstream version 2.6.3
+
+ -- Mo Zhou <lumin@debian.org>  Wed, 28 Dec 2022 00:14:58 -0500
+
+onednn (2.6.2-2) unstable; urgency=medium
+
+  * Refresh symbols control file for amd64. (Closes: #1022335)
+
+ -- Mo Zhou <lumin@debian.org>  Mon, 24 Oct 2022 17:35:32 -0400
+
+onednn (2.6.2-1) unstable; urgency=medium
+
+  * New upstream version 2.6.2
+
+ -- Mo Zhou <lumin@debian.org>  Sat, 15 Oct 2022 17:57:09 -0400
+
+onednn (2.6.1-1) unstable; urgency=medium
+
+  * New upstream version 2.6.1
+  * No longer build the onednn-doc package.
+
+ -- Mo Zhou <lumin@debian.org>  Sat, 16 Jul 2022 22:25:25 -0700
+
+onednn (2.6-2) unstable; urgency=medium
+
+  * Only set DNNL_GPU_RUNTIME=OCL on amd64 architecture. Others unsupported.
+
+ -- Mo Zhou <lumin@debian.org>  Fri, 15 Jul 2022 15:36:52 -0700
+
+onednn (2.6-1) unstable; urgency=medium
+
+  * d/rules: Don't force CLI color.
+  * Upload to unstable.
+
+ -- Mo Zhou <lumin@debian.org>  Sat, 25 Jun 2022 20:09:42 -0700
+
+onednn (2.6-1~exp1) experimental; urgency=medium
+
+  * New upstream version 2.6
+    Please pin to this release for PyTorch/1.12~rc and ideep.
+  * Development files for mkl-dnn no longer exists.
+  * Refresh symbols control file.
+  * Reflect upstream chagnes for doxygen doc build and installation.
+  * Temporarily disable patches that do not apply.
+  * Upload to experimental.
+
+ -- Mo Zhou <lumin@debian.org>  Tue, 07 Jun 2022 22:13:10 -0700
+
+onednn (2.2.4+ds-2) unstable; urgency=medium
+
+  * Really fix arm64 build. The previous fix was incorrect.
+
+ -- Mo Zhou <lumin@debian.org>  Sun, 09 Jan 2022 21:50:06 -0500
+
+onednn (2.2.4+ds-1) unstable; urgency=medium
+
+  [ Gard Spreemann ]
+  * Update GCC 11 patch for arm64 (Closes: #984270)
+
+  [ Mo Zhou ]
+  * New upstream version 2.2.4+ds
+  * Rebase existing patches.
+
+ -- Mo Zhou <lumin@debian.org>  Mon, 03 Jan 2022 12:31:14 -0500
+
+onednn (2.2.2+ds-3) unstable; urgency=medium
+
+  * Team upload
+
+  [ Gard Spreemann ]
+  * Add patch to fix building with GCC 11. (Closes: #984270)
+
+  [ Andreas Tille ]
+  * Standards-Version: 4.6.0
+  * Update symbols file
+
+ -- Andreas Tille <tille@debian.org>  Tue, 23 Nov 2021 15:11:48 +0100
+
+onednn (2.2.2+ds-2) unstable; urgency=medium
+
+  * Upload to unstable.
+
+ -- Mo Zhou <lumin@debian.org>  Fri, 03 Sep 2021 23:22:57 -0400
+
+onednn (2.2.2+ds-1) experimental; urgency=medium
+
+  [ Michael R. Crusoe ]
+  * debian/control: mark the -doc package as Multi-Arch: foreign
+
+  [ Mo Zhou ]
+  * New upstream version 2.2.2+ds
+  * Refresh symbols control file.
+  * Remove cmake-no-install-ocl-cmake.patch, no longer needed.
+
+ -- Mo Zhou <lumin@debian.org>  Wed, 19 May 2021 14:33:32 +0800
+
+onednn (2.0+ds-2) unstable; urgency=medium
+
+  * Team upload.
+  * Test build in debian/experimental worked, release to unstable.
+
+ -- Michael R. Crusoe <crusoe@debian.org>  Thu, 31 Dec 2020 09:35:28 +0100
+
+onednn (2.0+ds-2~0exp0simde) experimental; urgency=medium
+
+  * Team upload.
+  * Rebuild using SIMDe 0.7.0-1
+  * Mark -doc as Multi-Arch: foreign
+  * debian/copyright: refresh
+  * debian/source/lintian-overrides: unused, removed
+  * Standards-Version: 4.5.1 (routine-update)
+  * Respect DEB_BUILD_OPTIONS in override_dh_auto_test target (routine-
+    update)
+  * Add salsa-ci file (routine-update)
+  * Rules-Requires-Root: no (routine-update)
+  * debian/upstream/metadata: update URLs
+  * documented cmake-no-install-ocl-cmake.patch
+
+ -- Michael R. Crusoe <crusoe@debian.org>  Wed, 30 Dec 2020 16:01:54 +0100
+
+onednn (2.0+ds-1) unstable; urgency=medium
+
+  * Upload to unstable.
+
+ -- Mo Zhou <lumin@debian.org>  Sat, 12 Dec 2020 10:07:32 +0800
+
+onednn (2.0+ds-1~exp1) experimental; urgency=medium
+
+  * New upstream version 2.0+ds (Dec. 2020)
+  * SOVERSION bump from 1 -> 2 following upstream.
+  * Fix typo in Autopkgtest generator and control files.
+  * Refresh symbols for amd64.
+  * Only track symbols for the amd64 architecture.
+
+ -- Mo Zhou <lumin@debian.org>  Thu, 10 Dec 2020 21:19:18 +0800
+
+onednn (2.0~beta10+ds-2) unstable; urgency=medium
+
+  * Refresh symbols control file for s390x to address FTBFS.
+  * Autopkgtest: restrict supported arches to amd64 arm64 ppc64el s390x.
+
+ -- Mo Zhou <lumin@debian.org>  Sun, 22 Nov 2020 15:20:33 +0800
+
+onednn (2.0~beta10+ds-1) unstable; urgency=medium
+
+  * New upstream version 2.0~beta10+ds
+  * d/copyright: Also exclude doc/assets/fonts directory.
+  * Deprecate patch: html-template-no-privacy-breach.patch
+  * Add s390x to supported architecture list as per upstream changelog.
+  * Install the newly added headers to the -dev package.
+  * Refresh symbols control file for amd64, arm64 and ppc64el.
+
+ -- Mo Zhou <lumin@debian.org>  Tue, 03 Nov 2020 14:21:23 +0800
+
+onednn (2.0~beta8+ds-4) unstable; urgency=medium
+
+  [ Michael R. Crusoe ]
+  * debian/patches/simde: enable compilation on non-x86 (Closes: #973370)
+
+  [ Mo Zhou ]
+  * Add symbols control file for arm64 and ppc64el.
+  * Add Build-Depends-Package field in symbols file.
+
+ -- Mo Zhou <lumin@debian.org>  Sat, 31 Oct 2020 10:32:37 +0800
+
+onednn (2.0~beta8+ds-3) unstable; urgency=medium
+
+  * Breaks & Replaces libmkldnn1 and libmkldnn-dev. (Closes: #972465)
+  * Packaging repo has been transferred from science team to deep learning team.
+  * Replace the science team with deep learning team in maintainer field.
+
+ -- Mo Zhou <lumin@debian.org>  Mon, 19 Oct 2020 22:01:16 +0800
+
+onednn (2.0~beta8+ds-2) unstable; urgency=medium
+
+  * Upload to unstable.
+
+ -- Mo Zhou <lumin@debian.org>  Fri, 16 Oct 2020 10:39:54 +0800
+
+onednn (2.0~beta8+ds-1) experimental; urgency=medium
+
+  * New upstream version 2.0~beta8+ds
+  * Refresh existing patches and symbols control file.
+  * Add ppc64el to the list of supported Architectures.
+  * Update d/tests/testutil.sh and regenerate autopkgtest control file.
+
+ -- Mo Zhou <lumin@debian.org>  Wed, 02 Sep 2020 12:36:30 +0800
+
+onednn (2.0~beta7+ds-1) experimental; urgency=medium
+
+  * New upstream version 2.0~beta7+ds
+  * Rebase cmake-no-install-ocl-cmake.patch.
+  * Install the MKLDNN compat cmake files again.
+  * Refresh symbols control file.
+
+ -- Mo Zhou <lumin@debian.org>  Tue, 14 Jul 2020 21:52:07 +0800
+
+onednn (2.0~beta6+ds-1~exp1) experimental; urgency=medium
+
+  * New upstream version 2.0~beta6+ds
+  * Refresh the patches.
+  * Enable arm64 in the Architecture list.
+  * Bump debhelper compat level to 13.
+  * Create a directory to workaround a install failure.
+  * Nolonger create symlinks for the mathjax directory.
+  * Install one new header file.
+  * Refresh symbols control file.
+  * Apply wrap-and-sort.
+  * Uscan: add repacksuffix and dversionmangle.
+
+ -- Mo Zhou <lumin@debian.org>  Thu, 04 Jun 2020 16:58:04 +0800
+
+onednn (2.0~beta5-1) experimental; urgency=medium
+
+  * New upstream version 2.0~beta5
+  * Source has been renamed to oneDNN by upstream.
+  * Rename the source packages and binary packages, and rewrite the short/long
+    package descriptions. Rename control files as well.
+  * Bump Standards-Version to 4.5.0 (no change).
+  * Update upstream homepage, and d/watch using new upstream URL.
+  * Add libtbb-dev to B-D.
+  * Update upstrean name and source URL in d/copyright.
+  * Update the Salsa URL due to repo rename.
+
+ -- Mo Zhou <lumin@debian.org>  Fri, 17 Apr 2020 14:13:22 +0800
+
+mkl-dnn (2.0~beta4-1) unstable; urgency=medium
+
+  * New upstream version 2.0~beta4
+  * Deal with the files reported by dh_missing.
+  * Refresh symbols control file.
+  * Patch CMake to skip installation of FindOpenCL.cmake
+
+ -- Mo Zhou <lumin@debian.org>  Thu, 13 Feb 2020 11:24:45 +0800
+
+mkl-dnn (2.0~beta3-2) unstable; urgency=medium
+
+  * Autopkgtest: depends on ocl-icd-opencl-dev and link against libOpenCL.
+  * Let libmkldnn-dev Recommend ocl-icd-opencl-dev. (Closes: #947894)
+
+ -- Mo Zhou <lumin@debian.org>  Fri, 17 Jan 2020 13:34:58 +0800
+
+mkl-dnn (2.0~beta3-1) unstable; urgency=medium
+
+  * New upstream version 2.0~beta3
+  * Enable OpenCL (update B-D, flags in rules, symbols).
+  * Change dh_missing from list-missing to fail-missing.
+  * Symlinks libmkldnn*.so* are no longer provided (SONAME transition).
+  * control&copyright: Update my mail address.
+
+ -- Mo Zhou <lumin@debian.org>  Sat, 28 Dec 2019 15:26:17 +0800
+
+mkl-dnn (1.1.1-1) unstable; urgency=medium
+
+  * New upstream version 1.1.1
+
+ -- Mo Zhou <cdluminate@gmail.com>  Fri, 25 Oct 2019 12:05:58 +0800
+
+mkl-dnn (1.1-3) unstable; urgency=medium
+
+  * Update d/tests/testutil.sh and re-generate autopkgtest control file.
+  * Switch buildsystem to cmake+ninja.
+
+ -- Mo Zhou <cdluminate@gmail.com>  Sat, 19 Oct 2019 13:59:30 +0800
+
+mkl-dnn (1.1-2) unstable; urgency=medium
+
+  * Nolonger differentiate the arch/indep rules. (Fixes FTBFS on arch:all)
+  * Bump debhelper compat level to 12.
+
+ -- Mo Zhou <cdluminate@gmail.com>  Sat, 12 Oct 2019 15:34:48 +0800
+
+mkl-dnn (1.1-1) unstable; urgency=medium
+
+  * New upstream version 1.1
+  * Update installation control files and long descriptions.
+  * Refresh symbols and reflect SONAME change.
+  * Starting with version 1.1 the library is renamed to DNNL.
+
+ -- Mo Zhou <cdluminate@gmail.com>  Sun, 06 Oct 2019 15:17:00 +0800
+
+mkl-dnn (1.0.2-2) unstable; urgency=medium
+
+  * Update short description.
+  * B-D on debhelper-compat (= 11) and remove d/compat.
+  * Bump Standards-Version to 4.4.0 (no change).
+  * Apply wrap-and-sort.
+
+ -- Mo Zhou <cdluminate@gmail.com>  Wed, 04 Sep 2019 05:32:03 +0000
+
+mkl-dnn (1.0.2-1) unstable; urgency=medium
+
+  * New upstream version 1.0.2
+  * Exclude the vendored copy of Mathjax.
+  * Let libmkldnn-doc use libjs-mathjax.
+
+ -- Mo Zhou <cdluminate@gmail.com>  Wed, 28 Aug 2019 05:10:27 +0000
+
+mkl-dnn (1.0.1-1) unstable; urgency=medium
+
+  * New upstream version 1.0.1
+  * Bump SOVERSION to 1, renaming shlib packages.
+  * Update symbol table for GCC-9, marking incompatible ones as optional.
+    (Closes: #925777)
+
+ -- Mo Zhou <cdluminate@gmail.com>  Thu, 01 Aug 2019 09:28:49 +0000
+
+mkl-dnn (1.0-2) unstable; urgency=medium
+
+  * Add tester script for auto-generating autopkgtest control file.
+
+ -- Mo Zhou <cdluminate@gmail.com>  Sat, 27 Jul 2019 12:25:36 +0000
+
+mkl-dnn (1.0-1) unstable; urgency=medium
+
+  * New upstream version 1.0
+  * Apply wrap-and-sort.
+  * Update symbols control file.
+  * Install a new header file mkldnn_config.h .
+  * Patch HTML header to prevent privacy breach.
+  * Override more lintian E&W.
+
+ -- Mo Zhou <cdluminate@gmail.com>  Mon, 22 Jul 2019 09:17:36 +0000
+
+mkl-dnn (0.20-1) unstable; urgency=medium
+
+  * Upload to unstable.
+
+ -- Mo Zhou <cdluminate@gmail.com>  Mon, 08 Jul 2019 06:16:10 +0000
+
+mkl-dnn (0.20-1~exp1) experimental; urgency=medium
+
+  * New upstream version 0.20
+  * Refresh symbol list.
+
+ -- Mo Zhou <cdluminate@gmail.com>  Thu, 04 Jul 2019 14:09:04 +0000
+
+mkl-dnn (0.19-1~exp1) experimental; urgency=medium
+
+  * New upstream version 0.19
+
+ -- Mo Zhou <cdluminate@gmail.com>  Thu, 16 May 2019 05:35:08 +0000
+
+mkl-dnn (0.18.1-1~exp1) experimental; urgency=medium
+
+  * New upstream version 0.18.1
+
+ -- Mo Zhou <cdluminate@gmail.com>  Sun, 31 Mar 2019 14:52:02 +0000
+
+mkl-dnn (0.18-1~exp1) experimental; urgency=medium
+
+  * New upstream version 0.18
+  * Update installation because upstream cmake adopted GNUInstallDir.
+  * Install a new header file and CMake files for mkldnn.
+  * Refresh symbols control file.
+
+ -- Mo Zhou <cdluminate@gmail.com>  Mon, 04 Mar 2019 07:06:37 +0000
+
+mkl-dnn (0.17.4-1) unstable; urgency=medium
+
+  * New upstream version 0.17.4
+
+ -- Mo Zhou <cdluminate@gmail.com>  Wed, 13 Feb 2019 07:55:46 +0000
+
+mkl-dnn (0.17.3-1) unstable; urgency=medium
+
+  * New upstream version 0.17.3
+  * Bump Standards-Version to 4.3.0 (no change).
+
+ -- Mo Zhou <cdluminate@gmail.com>  Fri, 01 Feb 2019 06:55:19 +0000
+
+mkl-dnn (0.17.2-1) unstable; urgency=medium
+
+  * New upstream version 0.17.2
+
+ -- Mo Zhou <cdluminate@gmail.com>  Sat, 22 Dec 2018 10:30:51 +0000
+
+mkl-dnn (0.17.1-1) unstable; urgency=medium
+
+  * New upstream version 0.17.1
+
+ -- Mo Zhou <cdluminate@gmail.com>  Sun, 02 Dec 2018 02:36:00 +0000
+
+mkl-dnn (0.17-1) unstable; urgency=medium
+
+  * New upstream version 0.17
+  * Autopkgtest: add missing depends and allow output to stderr.
+
+ -- Mo Zhou <cdluminate@gmail.com>  Fri, 23 Nov 2018 06:03:19 +0000
+
+mkl-dnn (0.17~rc-2) unstable; urgency=medium
+
+  * Fix binary-all-only and binary-any-only builds. (Closes: #913591)
+
+ -- Mo Zhou <cdluminate@gmail.com>  Tue, 13 Nov 2018 04:17:12 +0000
+
+mkl-dnn (0.17~rc-1) unstable; urgency=medium
+
+  * New upstream version 0.17~rc
+  * Refresh patches and symbols control file.
+  * Mark mkl-dnn as Multi-Arch: same.
+  * Remove README.Debian. The tips were outdated.
+  * Add debian/not-installed to reduce dh_missing output.
+  * Set -DARCH_OPT_FLAGS="" to avoid patching upstream cmake file.
+  * Upload to unstable.
+
+ -- Mo Zhou <cdluminate@gmail.com>  Mon, 12 Nov 2018 07:54:45 +0000
+
+mkl-dnn (0.16+git20180820.f51304a-1) experimental; urgency=low
+
+  * Initial release. (Closes: #894411)
+
+ -- Mo Zhou <cdluminate@gmail.com>  Wed, 22 Aug 2018 04:57:35 +0000

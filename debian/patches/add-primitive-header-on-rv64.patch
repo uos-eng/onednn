@@ -1,0 +1,18 @@
+Description: Add missing include common/primitive.hpp
+Author: Bo YU <tsu.yubo@gmail.com>
+Forwarded: https://github.com/oneapi-src/oneDNN/pull/2053
+Applied-Upstream: master
+Reviewed-By: Shengqi Chen <harry-chen@outlook.com>
+Last-Update: 2024-08-29
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/src/cpu/rv64/rvv_nchw_pooling.hpp
++++ b/src/cpu/rv64/rvv_nchw_pooling.hpp
+@@ -20,6 +20,7 @@
+ 
+ #include "common/primitive.hpp"
+ #include "cpu/cpu_pooling_pd.hpp"
++#include "common/primitive.hpp"
+ 
+ namespace dnnl {
+ namespace impl {

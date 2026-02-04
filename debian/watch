@@ -1,0 +1,7 @@
+Version: 5
+Template: GitHub
+Owner: uxlfoundation
+Project: oneDNN
+# skip (1) versions not starting with 'v' (2) -rc or -pc prereleases
+MatchingPattern: https://api.github.com/repos/[^/]+/[^/]+/git/refs/tags/v((?:\d\.?)+)
+RepackSuffix: +ds

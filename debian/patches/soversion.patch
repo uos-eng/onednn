@@ -1,0 +1,17 @@
+Description: Change SOVERSION to 3.6 due to ukernel API changes
+Author: Shengqi Chen <harry@debian.org>
+Forwarded: https://github.com/oneapi-src/oneDNN/issues/2514
+Last-Update: 2025-01-25
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -192,7 +192,7 @@
+ 
+ set_property(TARGET ${LIB_PACKAGE_NAME} PROPERTY OUTPUT_NAME ${DNNL_LIBRARY_NAME})
+ set_property(TARGET ${LIB_PACKAGE_NAME} PROPERTY VERSION "${DNNL_VERSION_MAJOR}.${DNNL_VERSION_MINOR}")
+-set_property(TARGET ${LIB_PACKAGE_NAME} PROPERTY SOVERSION "${DNNL_VERSION_MAJOR}")
++set_property(TARGET ${LIB_PACKAGE_NAME} PROPERTY SOVERSION "3.6") # ukernel APIs are exposed since 3.5, and have breaking changes in 3.6
+ 
+ target_include_directories(${LIB_PACKAGE_NAME} PUBLIC
+     $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}/include>

@@ -1,0 +1,8 @@
+fix-ppc64-gemm-power8.patch
+soversion.patch
+system-spdlog.patch
+system-gtest.patch
+add-primitive-header-on-rv64.patch
+disable-rvv-riscv64.patch
+disable-benchdnn-tests.patch
+enable-loong64-build.patch

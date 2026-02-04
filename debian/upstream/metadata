@@ -1,0 +1,6 @@
+Repository: https://github.com/oneapi-src/oneDNN.git
+Repository-Browse: https://github.com/oneapi-src/oneDNN
+Name: Intel(R) Math Kernel Library for Deep Neural Networks (Intel(R) MKL-DNN)
+Bug-Database: https://github.com/oneapi-src/oneDNN/issues
+Bug-Submit: https://github.com/oneapi-src/oneDNN/issues/choose
+Contact: https://github.com/oneapi-src/oneDNN/issues
