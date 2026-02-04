@@ -1,3 +1,9 @@
+onednn (3.9.1+ds-2deepin1) unstable; urgency=medium
+
+  * Fix compilation errors
+
+ -- zhaochengyi <zhaochengyi@uniontech.com>  Thu, 05 Feb 2026 10:06:53 +0800
+
 onednn (3.9.1+ds-2) unstable; urgency=medium
 
   * d/tests: add more examples to compile.
